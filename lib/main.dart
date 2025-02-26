@@ -126,6 +126,13 @@ class HomeActivity extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => Arif_Activity()));
+        },
+        child: const Icon(Icons.add),
+      ),
 
       // body: Center(
       //   child: Image.asset("assets/Img/rifat.jpg"),
@@ -135,8 +142,7 @@ class HomeActivity extends StatelessWidget {
 }
 
 class Arif_Activity extends StatelessWidget {
-
-PopUpDialog(context, contant) {
+  PopUpDialog(context, contant) {
     return showDialog(
         context: context,
         builder: (BuildContext Context) {
