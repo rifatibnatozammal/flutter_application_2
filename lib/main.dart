@@ -1,21 +1,135 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeActivity(),
     );
   }
 }
-// Hi Rifat.
+
+class HomeActivity extends StatelessWidget {
+  PopUpDialog(context, contant) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext Context) {
+          return AlertDialog(
+              title: Text("Alart Box"),
+              content: Text(contant),
+              actions: [
+                TextButton(onPressed: () {}, child: Text("Yes")),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(Context);
+                    },
+                    child: Text("No"))
+              ]);
+        });
+  }
+
+  const HomeActivity({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("MY APP"),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.red,
+                child: ElevatedButton(
+                    onPressed: () {
+                      PopUpDialog(context, "This is Content of Red Button");
+                    },
+                    child: Text("Ted Button")),
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.blue,
+                child: ElevatedButton(
+                    onPressed: () {
+                      PopUpDialog(context, "This is Content of Blue Button");
+                    },
+                    child: Text("Blue Button")),
+              ),
+              Container(
+                height: 150,
+                width: 250,
+                color: Colors.green,
+                child: Image.asset("assets/Img/rifat.jpg"),
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.purpleAccent,
+                child: ElevatedButton(
+                    onPressed: () {
+                      PopUpDialog(context, "This is Content of Purple Button");
+                    },
+                    child: Text("Purple Button")),
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.purple,
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.black,
+                child: ElevatedButton(
+                    onPressed: () {
+                      PopUpDialog(context, "This is Content of Black Button");
+                    },
+                    child: Text("Black Button")),
+              ),
+              Container(
+                height: 150,
+                width: 250,
+                color: Colors.green,
+                child: Image.asset("assets/Img/rifat.jpg"),
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.green,
+                child: ElevatedButton(
+                    onPressed: () {
+                      PopUpDialog(context, "This is Content of Green Button");
+                    },
+                    child: Text("Green Button{}")),
+              )
+            ],
+          ),
+        ],
+      ),
+
+      // body: Center(
+      //   child: Image.asset("assets/Img/rifat.jpg"),
+      // ),
+    );
+  }
+}
